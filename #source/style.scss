@@ -1061,13 +1061,13 @@ body.lock {
             display: block;
             z-index: 199;
             right: 0;
-            top: -100%;
+            top: -150%;
             padding: 50px 15px 15px 35px;
             height: 100vh;
             width: 100vw;
             background-color: #86adef;
             overflow: auto;
-            transition: all .5s ease;
+            transition: all .7s ease;
             &.active {
                 right: 0;
                 top: 0;
