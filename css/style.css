@@ -1123,10 +1123,10 @@ body.lock {
     transform: translateX(110%);
     padding: 100px 15px 15px 35px;
     height: 100vh;
-    width: 50%;
+    width: 100vw;
     background-color: #86adef;
     overflow: auto;
-    transition: all 0.5s ease;
+    transition: all 0.7s ease;
   }
   .header__burger-menu.active {
     transform: translateX(0);
@@ -1134,7 +1134,7 @@ body.lock {
   .header__burger-list {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     text-transform: uppercase;
     font-family: "Gilroy Medium";
     font-weight: 400;
@@ -1475,9 +1475,6 @@ body.lock {
 @media (max-width: 651px) {
   .header__address {
     display: none;
-  }
-  .header__burger-menu {
-    width: 70vw;
   }
 
   .certification {
