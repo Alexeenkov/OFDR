@@ -61,7 +61,9 @@ ul {
 
 html,
 body {
-    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    // height: 100%;
     color: #333333;
 }
 
@@ -150,7 +152,7 @@ body.lock {
             text-decoration: underline;
         }
     }
-    &__burger {
+    &__burger-wrapper {
         display: none;
     }
     &__burger-menu {
@@ -167,6 +169,36 @@ body.lock {
         font-weight: 400;
         font-style: normal;
         font-size: 16px;
+    }
+    &__item {
+        position: relative;
+        left: 10%;
+        opacity: 0;
+        &:nth-child(1) {
+            transition: all 0.8s ease 0.1s;
+        }
+        &:nth-child(2) {
+            transition: all 0.8s ease 0.2s;
+        }
+        &:nth-child(3) {
+            transition: all 0.8s ease 0.3s;
+        }
+        &:nth-child(4) {
+            transition: all 0.8s ease 0.4s;
+        }
+        &:nth-child(5) {
+            transition: all 0.8s ease 0.5s;
+        }
+        &:nth-child(6) {
+            transition: all 0.8s ease 0.6s;
+        }
+        &:nth-child(7) {
+            transition: all 0.8s ease 0.7s;
+        }
+        &._active {
+            left: 0;
+            opacity: 1;
+        }
     }
     &__link {
         color: #000000;
@@ -358,27 +390,45 @@ body.lock {
     margin-top: 25px;
     padding-bottom: 25px;
     &__title {
+        position: relative;
+        top: 10%;
+        opacity: 0;
         margin-top: 78px;
         max-width: 675px;
         font-family: "Gilroy Heavy", "Arial", sans-serif;
         font-weight: 700;
         font-style: normal;
         font-size: 40px;
+        transition: all 0.8s ease 1s;
+        &._active {
+            top: 0;
+            opacity: 1;
+        }
     }
     &__text {
+        position: relative;
+        top: 10%;
+        opacity: 0;
         margin-top: 25px;
         font-family: "Gilroy Medium", "Arial", sans-serif;
         font-weight: 400;
         font-style: normal;
         font-size: 24px;
+        transition: all 0.8s ease 1.4s;
         span {
             font-family: "Gilroy Heavy", "Arial", sans-serif;
             font-weight: 700;
+        }
+        &._active {
+            top: 0;
+            opacity: 1;
         }
     }
     &__button {
         position: relative;
         top: 0;
+        top: 10%;
+        opacity: 0;
         display: block;
         margin-top: 35px;
         padding: 15px 0;
@@ -394,7 +444,11 @@ body.lock {
         font-style: normal;
         font-size: 16px;
         color: #ffffff;
-        transition: all 0.3s ease;
+        transition: all 0.8s ease 1.6s;
+        &._active {
+            top: 0;
+            opacity: 1;
+        }
         &:hover {
             transition: all 0.3s ease;
             top: -4px;
@@ -407,6 +461,7 @@ body.lock {
     &__image {
         margin-bottom: -30px;
         max-width: 390px;
+        align-self: flex-end;
     }
 }
 
@@ -441,8 +496,11 @@ body.lock {
         transform: translateX(-50%);
     }
     &__item {
+        position: relative;
+        transform: scale(0);
         display: flex;
         margin-bottom: 30px;
+        transition: transform 0.8s ease 0s;
         &:nth-child(4n+2) {
             margin-left: 30px;
             margin-right: 31px;
@@ -453,9 +511,11 @@ body.lock {
         &:nth-child(n+9) {
             margin-bottom: 0;
         }
+        &._active {
+            transform: scale(1);
+        }
     }
     &__card {
-        position: relative;
         display: block;
         padding: 115px 28px 15px 28px;
         width: 262px;
@@ -463,7 +523,7 @@ body.lock {
         text-decoration: none;
         text-align: center;
         box-shadow: 0 2px 15px rgba($color: #000000, $alpha: 0.07);
-        transition: all .3s ease;
+        transition: box-shadow .3s ease;
         &:hover {
             box-shadow: 0 0px 30px rgba($color: #87aff1, $alpha: 0.5);
         }
@@ -507,27 +567,52 @@ body.lock {
         border-radius: 50%;
         border: 1px solid #e8e8e8;
         background-color: #fff;
+        transform: scale(0);
+        transition: all 0.8s ease;
+        &._active {
+            transform: scale(1);
+        }
     }
     &__title {
+        position: relative;
+        top: 30px;
+        opacity: 0;
         margin-bottom: 10px;
         font-family: "Gilroy Extra-Bold", "Arial", sans-serif;
         font-weight: 700;
         font-style: normal;
         font-size: 22px;
+        transition: all 0.8s ease 0.6s;
+        &._active {
+            top: 0;
+            opacity: 1;
+        }
     }
     &__text {
+        position: relative;
+        top: 30px;
+        opacity: 0;
         padding: 0 15px;
         font-family: "Gilroy Medium", "Arial", sans-serif;
         font-weight: 400;
         font-style: normal;
         font-size: 17px;
         line-height: 1.47;
+        transition: all 0.8s ease 0.9s;
+        &._active {
+            top: 0;
+            opacity: 1;
+        }
     }
 }
 
 .programs {
     margin-top: 52px;
+    & .title {
+        margin: 0 10px;
+    }
     &__section {
+        transform: scale(0);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -536,15 +621,18 @@ body.lock {
         margin-right: 13px;
         margin-left: 14px;
         box-shadow: 0 2px 15px rgba($color: #000000, $alpha: 0.07);
-        transition: all .3s ease;
+        transition: box-shadow .3s ease, transform 1s ease;
         &:hover {
-            box-shadow: 0 0px 30px rgba($color: #87aff1, $alpha: 0.5);
+            box-shadow: 0 0px 15px rgba($color: #87aff1, $alpha: 0.5);
+        }
+        &._active {
+            transform: scale(1);
         }
     }
     &__link {
         display: block;
         max-width: 265px;
-        padding: 26px 25px;
+        padding: 26px 25px 24px 25px;
         text-decoration: none;
         color: inherit;
     }
@@ -558,6 +646,7 @@ body.lock {
         font-weight: 700;
         font-style: normal;
         font-size: 19px;
+        line-height: 1.4;
     }
     &__access {
         font-family: "Gilroy Medium", "Arial", sans-serif;
@@ -586,13 +675,18 @@ body.lock {
 }
 
 .programs-slider {
-    margin-top: 29px;
+    box-sizing: content-box;
+    padding-top: 20px;
+    margin-top: 9px;
     max-width: 1170px;
 }
 
 .examples {
     margin-top: 68px;
     background-color: #f6f6f6;
+    & .title {
+        margin: 0 10px;
+    }
     &__wrapper {
         position: relative;
         height: 100%;
@@ -607,8 +701,13 @@ body.lock {
     max-width: 1010px;
     &__image {
         text-align: center;
+        transform: scale(0);
+        transition: all 1s ease;
         img {
             max-width: 100%;
+        }
+        &._active {
+            transform: scale(1);
         }
     }
 }
@@ -664,12 +763,18 @@ body.lock {
 
 .promo {
     position: relative;
+    top: 40px;
+    opacity: 0;
     margin-right: 31px;
     background-color: #fafafb;
     box-shadow: 0 2px 15px rgba($color: #000000, $alpha: 0.07);
-    transition: all .3s ease;
+    transition: box-shadow .3s ease, top .8s ease, opacity .8s ease;
     &:hover {
         box-shadow: 0 0px 30px rgba($color: #87aff1, $alpha: 0.5);
+    }
+    &._active {
+        top: 0;
+        opacity: 1;
     }
     &__bg {
         position: absolute;
@@ -717,8 +822,15 @@ body.lock {
 }
 
 .card {
+    position: relative;
+    top: 60px;
+    opacity: 0;
     box-shadow: 0 2px 15px rgba($color: #000000, $alpha: 0.07);
-    transition: all .3s ease;
+    transition: box-shadow .3s ease, top .8s ease, opacity .8s ease;
+    &._active {
+        top: 0;
+        opacity: 1;
+    }
     &:hover {
         box-shadow: 0 0px 30px rgba($color: #87aff1, $alpha: 0.5);
     }
@@ -1004,73 +1116,86 @@ body.lock {
 // * ======================================================
 @media (max-width: 924px) {
     .header {
-        &__burger {
+        padding-right: 70px;
+        &__burger-wrapper {
             display: block;
-            position: relative;
+            position: fixed;
+            top: 35px;
+            right: 20px;
             z-index: 299;
-            margin-right: 10px;
-            margin-left: 15px;
+            cursor: pointer;
+            box-sizing: content-box;
+            width: 50px;
+            height: 50px;
+            background-color: #bdcef5af;
+            border-radius: 50%;
+        }
+        &__burger {
+            z-index: 300;
             width: 30px;
             height: 23px;
-            cursor: pointer;
             &:focus {
                 outline: none;
             }
             span {
                 position: absolute;
                 background-color: #000;
-                left: 0;
-                width: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 30px;
                 height: 3px;
-                top: 10px;
+                top: 23px;
                 transition: all 0.5s ease 0s;
             }
             &::after,
             &::before {
                 content: "";
                 position: absolute;
-                width: 100%;
+                width: 30px;
                 height: 3px;
-                left: 0;
+                left: 50%;
+                transform: translateX(-50%);
                 background-color: #000;
                 transition: all 0.5s ease 0s;
             }
             &::after {
-                bottom: 0;
+                top: 33px;
             }
             &::before {
-                top: 0;
+                top: 13px;
             }
             &.active span {
                 transform: scale(0);
             }
             &.active::before {
                 transform: rotate(45deg);
-                top: 11px;
+                top: 24px;
+                left: 11px;
             }
             &.active::after {
                 transform: rotate(-45deg);
-                bottom: 9px;
+                top: 24px;
+                left: 11px;
             }
         }
         &__menu {
             display: none;
         }
         &__burger-menu {
-            position: absolute;
+            position: fixed;
             display: block;
             z-index: 199;
-            right: -100%;
+            right: 0;
             top: 0;
-            padding: 50px 15px 15px 35px;
+            transform: translateX(110%);
+            padding: 100px 15px 15px 35px;
             height: 100vh;
             width: 50%;
             background-color: #86adef;
             overflow: auto;
             transition: all .5s ease;
             &.active {
-                right: 0;
-                top: 0;
+                transform: translateX(0);
             }
         }
         &__burger-list {
@@ -1081,6 +1206,8 @@ body.lock {
             font-family: "Gilroy Medium";
             font-weight: 400;
             font-style: normal;
+            font-size: 24px;
+            text-align: left;
         }
         &__burger-item {
             &:nth-child(n+2) {
@@ -1439,9 +1566,6 @@ body.lock {
 // ? ======================================================
 // ? ======================================================
 @media (max-width: 651px) {
-    body {
-        max-width: 651px;
-    }
     .header {
         &__address {
             display: none;
@@ -1575,19 +1699,22 @@ body.lock {
         }
     }
     .card {
+        width: 100%;
         &:last-child {
             margin-top: 30px;
             margin-left: 0;
         }
         &__wrapper {
             display: block;
-            width: 245px;
+            width: 100%;
             padding: 15px;
             text-decoration: none;
             color: inherit;
         }
         &__image {
             margin-bottom: 10px;
+            width: 100%;
+            max-width: 100%;
         }
         &__date {
             font-size: 14px;
@@ -1703,13 +1830,25 @@ body.lock {
     }
 }
 
+// ? ======================================================
+// ? ======================================================
+// ? ======================================================
 @media (max-width: 460px) {
     .header {
+        &__burger-wrapper {
+            top: 21px;
+        }
         &__logo {
             font-size: 30px;
         }
         &__burger-menu {
             width: 100vw;
+            padding: 100px 15px 15px 15px;
+        }
+        &__burger-list {
+            align-items: center;
+            font-size: 24px;
+            text-align: center;
         }
     }
     .logo {
@@ -1805,6 +1944,9 @@ body.lock {
             &::after {
                 display: none;
             }
+        }
+        &__burger-list {
+            font-size: 20px;
         }
     }
     .logo {
