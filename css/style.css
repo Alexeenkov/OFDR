@@ -852,6 +852,7 @@ body.lock {
   margin-left: 31px;
 }
 .footer__title {
+  display: block;
   margin-bottom: 27px;
   font-family: "Gilroy Bold";
   font-weight: 700;
